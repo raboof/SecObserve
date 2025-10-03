@@ -11,7 +11,7 @@
 
 let
   runtime_env = {
-    API_BASE_URL = "http://localhost/api";
+    API_BASE_URL = "http://localhost:5000/api";
     OIDC_ENABLE = "false";
     OIDC_AUTHORITY = "dummy";
     OIDC_CLIENT_ID = "dummy";
@@ -32,9 +32,6 @@ let
     sourceRoot = "${finalAttrs.src.name}/frontend";
     npmDepsHash = "sha256-NQx2TwGkZ8W68O3ed6sj1EgN9do3koe1UuV/KtMrd4A=";
 
-    #postBuild = ''
-    #  find .
-    #'';
     postInstall = ''
       mkdir -p $out/etc/nginx
       cp ${nginx}/conf/mime.types $out/etc/nginx/mime.types
@@ -66,12 +63,10 @@ in
     '';
     extraBwrapArgs = [
       "--tmpfs /var/log/nginx"
-      #"--ro-bind ${pkg} /usr/share/nginx/html"
-      #"--ro-bind ${pkg}/etc/nginx /etc/nginx"
     ];
     passthru.npm = pkg;
     runScript = ''
-      #nginx -g "daemon off;" -c /etc/nginx/nginx.conf
+      nginx -g "daemon off;" -c /etc/nginx/nginx.conf
       echo nginx -g \"daemon off\;\" -c /etc/nginx/nginx.conf
       echo ${pkg}
       bash
