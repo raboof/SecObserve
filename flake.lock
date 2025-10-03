@@ -66,16 +66,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1759409240,
-        "narHash": "sha256-gUx5jdUBttzn40OxzHR4kcq1NtX6tnhcd26nXR9mkB8=",
+        "lastModified": 1759480184,
+        "narHash": "sha256-1m6haD2RSAABwRj9K2qC6criWQVuEJGe7yjQQerR5N8=",
         "owner": "raboof",
         "repo": "poetry2nix",
-        "rev": "95762fc690051726b9dceb1d7de75617b1d27fa9",
+        "rev": "cf9c89613fddfd1d79fbc3b5cd1617e33e5169fb",
         "type": "github"
       },
       "original": {
         "owner": "raboof",
-        "ref": "95762fc690051726b9dceb1d7de75617b1d27fa9",
+        "ref": "cf9c89613fddfd1d79fbc3b5cd1617e33e5169fb",
         "repo": "poetry2nix",
         "type": "github"
       }
@@ -83,25 +83,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "poetry2nix": "poetry2nix",
-        "secobserve-src": "secobserve-src"
-      }
-    },
-    "secobserve-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1758270780,
-        "narHash": "sha256-gIiy/6VSnIExxXtThC2ZQFpMzlNi2CUJjZMs4uCCJuw=",
-        "owner": "MaibornWolff",
-        "repo": "SecObserve",
-        "rev": "bed704cf366c0c636f54df4fc3e0a0371b5c243f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MaibornWolff",
-        "ref": "v1.38.0",
-        "repo": "SecObserve",
-        "type": "github"
+        "poetry2nix": "poetry2nix"
       }
     },
     "systems": {

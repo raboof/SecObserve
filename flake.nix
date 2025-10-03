@@ -5,17 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     poetry2nix = {
       #url = "github:nix-community/poetry2nix";
-      # various fixes
-      url = "github:raboof/poetry2nix?ref=95762fc690051726b9dceb1d7de75617b1d27fa9";
+      # various fixes that perhaps should be contributed or moved
+      # to overrides
+      url = "github:raboof/poetry2nix?ref=cf9c89613fddfd1d79fbc3b5cd1617e33e5169fb";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    secobserve-src = {
-      url = "github:MaibornWolff/SecObserve?ref=v1.38.0";
-      flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, poetry2nix, secobserve-src }:
+  outputs = { self, nixpkgs, poetry2nix }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

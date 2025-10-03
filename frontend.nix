@@ -26,11 +26,11 @@ let
     src = fetchFromGitHub {
       owner = "MaibornWolff";
       repo = "SecObserve";
-      tag = "v1.38.0";
-      hash = "sha256-gIiy/6VSnIExxXtThC2ZQFpMzlNi2CUJjZMs4uCCJuw=";
+      tag = "v1.39.0";
+      hash = "sha256-LqBKlwL5d/GyHVppVjXmgi3jhiv+jRU3NXS6D7XKSZk=";
     };
     sourceRoot = "${finalAttrs.src.name}/frontend";
-    npmDepsHash = "sha256-NQx2TwGkZ8W68O3ed6sj1EgN9do3koe1UuV/KtMrd4A=";
+    npmDepsHash = "sha256-sXK1psJYtXjPc0OVvAMulK8LE91V/2fUR7HZ2ETM8Sg=";
 
     postInstall = ''
       mkdir -p $out/etc/nginx

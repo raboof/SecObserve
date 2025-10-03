@@ -13,8 +13,8 @@ let
   src = fetchFromGitHub {
     owner = "MaibornWolff";
     repo = "SecObserve";
-    tag = "v1.38.0";
-    hash = "sha256-gIiy/6VSnIExxXtThC2ZQFpMzlNi2CUJjZMs4uCCJuw=";
+    tag = "v1.39.0";
+    hash = "sha256-LqBKlwL5d/GyHVppVjXmgi3jhiv+jRU3NXS6D7XKSZk=";
   };
   projectDir = runCommand "secobserve-backend-src" {} ''
     mkdir -p $out
@@ -39,7 +39,15 @@ poetry2nix.mkPoetryApplication {
         hash = "sha256-+95jR9XQfaVxV5OYc8wyZIq94QOz63gG5vs7TIkbDjc=";
       };
     });
-    pydantic-core = null;
+    #pydantic-core = null;
+    pydantic-core = prev.pydantic-core.overridePythonAttrs
+    (old: {
+      nativeBuildInputs = old.nativeBuildInputs or [ ] ++ [ maturin rustPlatform.cargoSetupHook rustPlatform.maturinBuildHook ];
+      cargoDeps = rustPlatform.fetchCargoVendor {
+        src = prev.pydantic-core.src;
+        hash = "sha256-MY6Gxoz5Q7nCptR+zvdABh2agfbpqOtfTtor4pmkb9c=";
+      };
+    });
   });
   buildPhase = ''
     runHook preBuild
