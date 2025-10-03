@@ -22,9 +22,16 @@
       pn = poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
     in
     {
-      packages.${system} = {
-        frontend = pkgs.callPackage ./frontend.nix {};
-        backend = pkgs.callPackage ./backend.nix { poetry2nix = pn; };
-      };
+      packages.${system} =
+        let
+          backend = pkgs.callPackage ./backend.nix { poetry2nix = pn; };
+        in
+        {
+          frontend = pkgs.callPackage ./frontend.nix {};
+          backend = backend;
+          manage = backend.overrideAttrs {
+            meta.mainProgram = "manage.py";
+          };
+        };
     };
 }
