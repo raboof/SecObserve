@@ -90,16 +90,16 @@
     "secobserve-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1759411603,
-        "narHash": "sha256-i/Bpjev5pnwLdjCe8uic7jf9BfbQBOUe0DdyDStRr/c=",
-        "owner": "raboof",
+        "lastModified": 1758270780,
+        "narHash": "sha256-gIiy/6VSnIExxXtThC2ZQFpMzlNi2CUJjZMs4uCCJuw=",
+        "owner": "MaibornWolff",
         "repo": "SecObserve",
-        "rev": "16c01743a0052802edf1765967da4c89b1c0526e",
+        "rev": "bed704cf366c0c636f54df4fc3e0a0371b5c243f",
         "type": "github"
       },
       "original": {
-        "owner": "raboof",
-        "ref": "16c01743a0052802edf1765967da4c89b1c0526e",
+        "owner": "MaibornWolff",
+        "ref": "v1.38.0",
         "repo": "SecObserve",
         "type": "github"
       }

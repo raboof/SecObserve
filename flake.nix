@@ -10,8 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secobserve-src = {
-      #url = "github:MaibornWolff/SecObserve?ref=v1.38.0";
-      url = "github:raboof/SecObserve?ref=16c01743a0052802edf1765967da4c89b1c0526e";
+      url = "github:MaibornWolff/SecObserve?ref=v1.38.0";
       flake = false;
     };
   };
@@ -26,8 +25,20 @@
     {
       packages.${system} = {
         frontend = pkgs.callPackage ./frontend.nix {};
-        backend = mkPoetryApplication {
-          projectDir = "${secobserve-src}/backend";
+        backend =
+        let
+          projectDir = pkgs.runCommand "secobserve-backend-src" {} ''
+            mkdir -p $out
+            cd ${secobserve-src}/backend
+            for i in *; do ln -s ${secobserve-src}/backend/$i $out/$i; done
+            cd $out
+            rm pyproject.toml
+            cp ${secobserve-src}/backend/pyproject.toml .
+            patch < ${./backend-pep517.patch}
+          '';
+        in
+        mkPoetryApplication {
+          inherit projectDir;
           overrides = pn.overrides.withDefaults(final: prev: {
             psycopg-binary = prev.psycopg2-binary;
             black = null;
@@ -87,7 +98,7 @@
                 export FIELD_ENCRYPTION_KEY=kGZfYHqY6iAxKnX6q5WJmtFz7T5A40E8dREc1Ywaz0w=
 
                 export HUEY_FILENAME=/tmp/huey.db
-     
+
                 ${pkgs.python3Packages.gunicorn}/bin/gunicorn config.wsgi --bind 127.0.0.1:5000
               '';
             in
