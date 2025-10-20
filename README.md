@@ -12,3 +12,8 @@ Usage:
     > User.objects.create_superuser('user', 'email', 'pass')
     $ nix run .#manage register_parsers
     $ nix run .#manage initial_license_load
+
+Possible future work:
+
+* make it easier to configure without hard-coding
+* look into 'manage collectstatic'
