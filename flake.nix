@@ -24,7 +24,7 @@
           backend = pkgs.callPackage ./backend.nix { poetry2nix = pn; };
         in
         {
-          frontend = pkgs.callPackage ./frontend.nix {};
+          frontend = pkgs.callPackage ./frontend/run.nix {};
           backend = backend;
           manage = backend.overrideAttrs {
             meta.mainProgram = "manage.py";
